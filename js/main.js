@@ -1,16 +1,36 @@
-function searchToggle(obj, evt){
-    var container = $(obj).closest('.search-wrapper');
+
+$(document).ready( function() {
+
+    var container = $('.search-wrapper');
+
+    // open search field, or if open search
+    $('.search-icon').click(function(){
+        var textInput = $('.search-input').val();
+
         if(!container.hasClass('active')){
-            console.log(obj);
-            console.log(container);
+            console.log("search open!");
             container.addClass('active');
-            evt.preventDefault();
+            event.preventDefault();
+        } else if (container.hasClass('active') && textInput.length > 0){
+            console.log("search for: " + textInput);
+
+            // clear input
+            // container.find('.search-input').val('');
         }
-        else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-            console.log(obj);
-            console.log(container);
+    });
+
+    // close search field
+    $('.close').click(function(){
+        if(container.hasClass('active') && $('.close').closest('.input-holder').length == 0){
+            console.log("search close!");
             container.removeClass('active');
             // clear input
             container.find('.search-input').val('');
         }
-}
+    });
+
+
+
+
+
+})
