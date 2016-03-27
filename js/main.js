@@ -30,11 +30,14 @@ $(document).ready( function() {
                 contentType: "application/json",
                 dataType: 'jsonp',
                 success: function (data) {
-                    console.log(data);
+                    for (i = 0; i < data[1].length; i++) {
+                        $('.results').append('<div class="article-frame"><a href="' + data[3][i] + '"><h3 class="article-title">' + data[1][i] + '</h3></a><p class="article-body">' + data[2][i] + '</p></div>');
+                    }
+                    // clear input
+                    container.find('.search-input').val('');
                 },
             });
-            // clear input
-            // container.find('.search-input').val('');
+            
         }
     });
 
