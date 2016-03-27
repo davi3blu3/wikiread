@@ -1,4 +1,8 @@
 
+function myCallback() {
+    console.log("Callback triggered!");
+}
+
 $(document).ready( function() {
 
     var container = $('.search-wrapper');
@@ -14,6 +18,21 @@ $(document).ready( function() {
         } else if (container.hasClass('active') && textInput.length > 0){
             console.log("search for: " + textInput);
 
+            // $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + textInput+ "&namespace=0&format=json", function(data, status){
+            //     console.log("Data: " + data + "\nStatus: " + status);
+            // });
+
+            var url = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + textInput+ '&namespace=0&format=json';
+            $.ajax({
+               type: 'GET',
+                url: url,
+                async: false,
+                contentType: "application/json",
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log(data);
+                },
+            });
             // clear input
             // container.find('.search-input').val('');
         }
@@ -32,5 +51,12 @@ $(document).ready( function() {
 
 
 
-
 })
+
+// GET REQUEST CONSTRUCTION
+
+// format input? i.e. URL Encoding
+//     space to %20,
+//     apostrophe to %27
+
+
