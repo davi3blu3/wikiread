@@ -15,7 +15,7 @@ $(document).ready(function () {
         // clear previous search results, if any
         if ($('.article-frame').length > 0) {
             $('.article-frame').remove();
-        };
+        }
         
         // API call
         $.ajax({
@@ -25,9 +25,12 @@ $(document).ready(function () {
             contentType: "application/json",
             dataType: 'jsonp',
             success: function (data) {
-                // iterate through variables, push to DOM
+
+                // iterate through results, push to DOM
                 for (i = 0; i < data[1].length; i += 1) {
-                    $('.results').append('<div class="article-frame"><a href="' + data[3][i] + '"><h3 class="article-title">' + data[1][i] + '</h3></a><p class="article-body">' + data[2][i] + '</p></div>');
+            
+                    $('<div class="article-frame"><a href="' + data[3][i] + '"><h3 class="article-title">' + data[1][i] + '</h3></a><p class="article-body">' + data[2][i] + '</p></div>').hide().appendTo(".results").fadeIn(500);
+            
                 }
                 // clear input
                 container.find('.search-input').val('');
@@ -71,4 +74,3 @@ $(document).ready(function () {
     });
 
 });
-
