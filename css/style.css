@@ -19,7 +19,8 @@ header {
 
 /* Creative Search */
 
-.search-wrapper {
+/* .search-wrapper { */
+.button-wrapper {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 100px;
@@ -28,17 +29,18 @@ header {
 
 .search-wrapper.active {}
 
-.random {
-/*    temp positioning until you resolve layout*/
+.inline {
+    display: inline-block;
+}
 
-    top: 80px;
-    left: 300px;
+.random {
     height: 70px;
-    width: 70px;
+    padding: 2px 15px;
     overflow: hidden;
     background: rgba(255,255,255,1);
     border-radius: 6px;
     position: relative;
+    color: #004380;
 }
 
 .search-wrapper .input-holder {
