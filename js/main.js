@@ -25,12 +25,25 @@ $(document).ready(function () {
             contentType: "application/json",
             dataType: 'jsonp',
             success: function (data) {
-                console.log('random call made');
+
                 // iterate through results, push to DOM
-                for (i = 0; i < data[1].length; i += 1) {
-            
-                    $('<div class="article-frame"><a href="' + data[3][i] + '"><h3 class="article-title">' + data[1][i] + '</h3></a><p class="article-body">' + data[2][i] + '</p></div>').hide().appendTo(".results").fadeIn(500);
-                }
+                var i = 0;
+
+                var interval = setInterval( function() {
+                    $('<div class="article-frame"><a href="'
+                        + data[3][i] + '"><h3 class="article-title">'
+                        + data[1][i] + '</h3></a><p class="article-body">'
+                        + data[2][i] + '</p></div>').hide().appendTo(".results").fadeIn('1500');
+                    i += 1;
+
+                    if (i >= data[1].length) {
+                        clearInterval(interval);
+                    }
+                }, 300);
+
+                    
+
+
                 // clear input
                 container.find('.search-input').val('');
             }
