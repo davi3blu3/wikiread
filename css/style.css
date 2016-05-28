@@ -54,7 +54,7 @@ header {
 }
 
 .search-wrapper.active .input-holder {
-  width: 250px;
+  width: 450px;
   border-radius: 50px;
   background: rgba(0,0,0,0.5);
   transition: all .5s cubic-bezier(0.000, 0.105, 0.035, 1.570);
